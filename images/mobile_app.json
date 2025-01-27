@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "Which tool is primarily used for cutting fabric in tailoring?",
+      "options": ["Scissors", "Needle", "Tape Measure", "Thread"],
+      "correctAnswer": 0
+    },
+    {
+      "question": "What is the purpose of a thimble in tailoring?",
+      "options": [
+        "To measure fabric",
+        "To protect the finger while sewing",
+        "To cut threads",
+        "To mark fabric"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "question": "Which type of stitch is commonly used for securing hems?",
+      "options": ["Backstitch", "Running Stitch", "Blind Stitch", "Chain Stitch"],
+      "correctAnswer": 2
+    },
+    {
+      "question": "What is the standard unit of measurement used in tailoring?",
+      "options": ["Inches", "Kilograms", "Liters", "Meters"],
+      "correctAnswer": 0
+    },
+    {
+      "question": "Which of the following is a type of sewing machine used in tailoring?",
+      "options": ["Overlocker", "Lathe", "Drill Press", "Bandsaw"],
+      "correctAnswer": 0
+    }
+  ]
+}

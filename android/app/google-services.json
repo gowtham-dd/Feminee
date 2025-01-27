@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "959377126100",
+    "firebase_url": "https://example-13a01-default-rtdb.firebaseio.com",
+    "project_id": "example-13a01",
+    "storage_bucket": "example-13a01.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:959377126100:android:5c4664656a5dbc6ef80141",
+        "android_client_info": {
+          "package_name": "com.example.online_cource_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcmi9lKy4GMtRUl9CMWuILj-WDZpF5vlM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

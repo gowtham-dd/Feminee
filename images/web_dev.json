@@ -1,0 +1,54 @@
+{
+  "questions": [
+    {
+      "question": "Which material is commonly used in pottery?",
+      "options": ["Clay", "Wood", "Metal", "Glass"],
+      "correctAnswer": 0
+    },
+    {
+      "question": "What is the primary purpose of a loom in handicrafts?",
+      "options": ["Weaving fabric", "Cutting patterns", "Painting designs", "Carving wood"],
+      "correctAnswer": 0
+    },
+    {
+      "question": "Which tool is essential for embroidery?",
+      "options": ["Needle", "Saw", "Hammer", "Screwdriver"],
+      "correctAnswer": 0
+    },
+    {
+      "question": "What is the process of creating patterns on fabric using wax and dye called?",
+      "options": ["Batik", "Weaving", "Quilting", "Knitting"],
+      "correctAnswer": 0
+    },
+    {
+      "question": "Which craft involves twisting and knotting threads to create decorative items?",
+      "options": ["Macramé", "Crochet", "Knitting", "Embroidery"],
+      "correctAnswer": 0
+    },
+    {
+      "question": "What is papier-mâché primarily made from?",
+      "options": ["Paper and glue", "Wood and paint", "Clay and water", "Metal and resin"],
+      "correctAnswer": 0
+    },
+    {
+      "question": "Which type of paint is most commonly used for painting on glass?",
+      "options": ["Acrylic paint", "Watercolor", "Oil paint", "Enamel paint"],
+      "correctAnswer": 3
+    },
+    {
+      "question": "What is the term for the art of making decorative designs by folding paper?",
+      "options": ["Origami", "Calligraphy", "Quilling", "Papercraft"],
+      "correctAnswer": 0
+    },
+    {
+      "question": "Which natural material is often used in basket weaving?",
+      "options": ["Rattan", "Plastic", "Wool", "Clay"],
+      "correctAnswer": 0
+    },
+    {
+      "question": "What is the purpose of a kiln in handicrafts?",
+      "options": ["To bake or fire clay", "To cut fabric", "To weave threads", "To carve wood"],
+      "correctAnswer": 0
+    }
+  ]
+}
