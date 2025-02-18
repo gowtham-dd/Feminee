@@ -79,7 +79,7 @@ class _SignUpPageState extends State<SignUpPage>
               FadeTransition(
                 opacity: _animation,
                 child: Image.asset(
-                  "images/logo.png",
+                  "images/logo1.png",
                   width: MediaQuery.of(context).size.width * .5,
                 ),
               ),

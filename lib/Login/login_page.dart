@@ -114,7 +114,7 @@ class _LoginPageState extends State<LoginPage>
               FadeTransition(
                 opacity: _animation,
                 child: Image.asset(
-                  "images/logo.png",
+                  "images/logo1.png",
                   width: MediaQuery.of(context).size.width * .5,
                   //    height: 150,
                 ),

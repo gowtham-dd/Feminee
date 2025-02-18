@@ -26,8 +26,10 @@ class _CourseViewPageState extends State<CourseViewPage> {
   }
 
   Future<void> _initializeVideoPlayer() async {
-    final videoUrl = await _getVideoUrl();
-    _videoController = VideoPlayerController.network(videoUrl)
+    // Update this to load the video from assets instead of Firebase Storage
+    final videoUrl = 'assets/demo.mp4'; // Path to your asset video
+    print("Video path: $videoUrl"); // Log the video path for debugging
+    _videoController = VideoPlayerController.asset(videoUrl)
       ..initialize().then((_) {
         setState(() {
           _chewieController = ChewieController(
@@ -47,11 +49,6 @@ class _CourseViewPageState extends State<CourseViewPage> {
           _isVideoLoaded = true;
         });
       });
-  }
-
-  Future<String> _getVideoUrl() async {
-    final ref = FirebaseStorage.instance.ref().child('demo/demo.mp4');
-    return await ref.getDownloadURL();
   }
 
   @override
@@ -215,7 +212,7 @@ class _CourseViewPageState extends State<CourseViewPage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('Lecture 2: Basics of Flutter',
+              Text('Lecture 2: Introduction to the Course',
                   style: Theme.of(context).textTheme.bodySmall),
               Text('20% completed',
                   style: Theme.of(context)

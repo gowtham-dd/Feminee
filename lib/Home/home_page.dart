@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-
 import 'package:online_cource_app/Detail/course_detail.dart';
 import 'package:online_cource_app/Model/model.dart.dart';
 import 'package:online_cource_app/Utils/custom_drawer.dart';
+import 'package:online_cource_app/chatbot/chatscreen.dart';
 import 'package:online_cource_app/constants.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -14,198 +14,141 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
+    List<Map<String, dynamic>> allCourses = [
+      ...onlineCourceOne,
+      ...onlineCourceTwo
+    ];
+
     return Scaffold(
       key: scaffoldKey,
       drawer: CustomDrawer(),
       backgroundColor: Colors.white,
       appBar: myAppBar(),
-      body: ListView(
-        padding:
-            const EdgeInsets.only(left: 20, right: 20, bottom: 20, top: 10),
-        children: [
-          const Text(
-            "Hey Gowtham,",
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 25,
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              "Hey Feminee!,",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
             ),
-          ),
-          const SizedBox(height: 15),
-          const Text(
-            "Find a course you want to learn",
-            style: TextStyle(
-              fontSize: 20,
+            const SizedBox(height: 15),
+            const Text(
+              "Get Personalized Recommendations..",
+              style: TextStyle(fontSize: 20),
             ),
-          ),
-          const SizedBox(height: 30),
-          // for search bar
-          searchBar(),
-          const SizedBox(height: 35),
-          const Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                "Categories",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 25,
-                ),
-              ),
-              Text(
-                "See All",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 19,
-                  color: primary,
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 35),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(
-                child: ListView.builder(
-                    physics: const NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    itemCount: onlineCourceOne.length,
-                    itemBuilder: (context, index) {
-                      return GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => CoursesDetail(
-                                imgDetail: onlineCourceOne[index]['img_detail'],
-                                title: onlineCourceOne[index]['title'],
-                                price: onlineCourceOne[index]['price'],
-                              ),
-                            ),
-                          );
-                        },
-                        child: availableCourses(context, index),
-                      );
-                    }),
-              ),
-              const SizedBox(
-                width: 20,
-              ),
-              Expanded(
-                child: ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: onlineCourceTwo.length,
-                    itemBuilder: (context, index) {
-                      return GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => CoursesDetail(
-                                imgDetail: onlineCourceTwo[index]['img_detail'],
-                                title: onlineCourceTwo[index]['title'],
-                                price: onlineCourceTwo[index]['price'],
-                              ),
-                            ),
-                          );
-                        },
-                        child: availableCoursesTwo(context, index),
-                      );
-                    }),
-              )
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-
-  Padding availableCourses(BuildContext context, int index) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 20),
-      child: Stack(
-        children: [
-          Container(
-            width: MediaQuery.of(context).size.width - 60 / 2,
-            height: 220,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage(
-                    onlineCourceOne[index]['img'],
-                  ),
-                  fit: BoxFit.cover),
-              borderRadius: BorderRadius.circular(20),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 25, right: 18, left: 18),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            const SizedBox(height: 30),
+            searchBar(),
+            const SizedBox(height: 35),
+            const Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  onlineCourceOne[index]['title'],
-                  style: const TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(
-                  height: 8,
+                  "Recommended",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
                 ),
                 Text(
-                  onlineCourceOne[index]['courses'],
+                  "See All",
                   style: TextStyle(
-                      fontSize: 14, color: Colors.black.withOpacity(0.6)),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 19,
+                      color: primary),
                 ),
               ],
             ),
-          ),
-        ],
+            const SizedBox(height: 20),
+            // Wrap GridView with Flexible to avoid overflow
+            Flexible(
+              child: GridView.builder(
+                padding: EdgeInsets.zero,
+                itemCount: allCourses.length,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 15,
+                  mainAxisSpacing: 15,
+                  childAspectRatio: 0.6, // Adjust aspect ratio as needed
+                ),
+                itemBuilder: (context, index) {
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => CoursesDetail(
+                            imgDetail: allCourses[index]['img_detail'],
+                            title: allCourses[index]['title'],
+                            price: allCourses[index]['price'],
+                          ),
+                        ),
+                      );
+                    },
+                    child: availableCourses(context, allCourses, index),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
+      // Add the floating action button
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          // Navigate to the ChatScreen
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    ChatScreen()), // Make sure to import ChatScreen
+          );
+        },
+        backgroundColor: const Color.fromARGB(
+            255, 255, 255, 255), // You can set the color as needed
+        child: const Icon(Icons.chat, size: 30),
       ),
     );
   }
 
-  Padding availableCoursesTwo(BuildContext context, int index) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 20),
-      child: Stack(
+  Widget availableCourses(
+      BuildContext context, List<Map<String, dynamic>> courses, int index) {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 5)],
+        color: Colors.white,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Hero(
-            tag: 'img1',
-            child: Container(
-              width: MediaQuery.of(context).size.width - 60 / 2,
-              height: 250,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage(
-                      onlineCourceTwo[index]['img'],
-                    ),
-                    fit: BoxFit.cover),
-                borderRadius: BorderRadius.circular(20),
-              ),
+          ClipRRect(
+            borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+            child: Image.asset(
+              courses[index]['img'],
+              height: 120,
+              width: double.infinity,
+              fit: BoxFit.cover,
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 25, right: 18, left: 18),
+            padding: const EdgeInsets.all(8.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  onlineCourceTwo[index]['title'],
+                  courses[index]['title'],
                   style: const TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(
-                  height: 8,
-                ),
+                const SizedBox(height: 5),
                 Text(
-                  onlineCourceTwo[index]['courses'],
-                  style: TextStyle(
-                      fontSize: 14, color: Colors.black.withOpacity(0.6)),
+                  courses[index]['courses'],
+                  style: TextStyle(fontSize: 14, color: Colors.black54),
                 ),
               ],
             ),
@@ -222,21 +165,12 @@ class _MyHomePageState extends State<MyHomePage> {
         color: grey,
         borderRadius: BorderRadius.circular(30),
       ),
-      child: Center(
-        child: Padding(
-          padding: const EdgeInsets.only(top: 5),
-          child: TextField(
-            decoration: InputDecoration(
-                border: InputBorder.none,
-                hintText: "Search for anything",
-                hintStyle: TextStyle(
-                  color: Colors.black.withOpacity(0.25),
-                ),
-                prefixIcon: const Icon(
-                  Icons.search,
-                  color: Colors.black54,
-                )),
-          ),
+      child: TextField(
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          hintText: "Search for anything",
+          hintStyle: TextStyle(color: Colors.black.withOpacity(0.25)),
+          prefixIcon: const Icon(Icons.search, color: Colors.black54),
         ),
       ),
     );
@@ -248,26 +182,14 @@ class _MyHomePageState extends State<MyHomePage> {
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          // SvgPicture.asset(
-          //   "images/burger_icon.svg",
-          // ),
           const Text(
-            'E-Learning',
-            style: TextStyle(
-              fontWeight: FontWeight.w500,
-              fontSize: 22,
-            ),
+            'Feminee',
+            style: TextStyle(fontWeight: FontWeight.w500, fontSize: 22),
           ),
-          Container(
-            height: 40,
-            width: 40,
-            decoration: const BoxDecoration(
-              shape: BoxShape.circle,
-              image: DecorationImage(
-                  image: NetworkImage(
-                    "https://www.simplilearn.com/ice9/free_resources_article_thumb/how_to_become_A_programmer.jpg",
-                  ),
-                  fit: BoxFit.cover),
+          CircleAvatar(
+            radius: 20,
+            backgroundImage: NetworkImage(
+              "https://www.simplilearn.com/ice9/free_resources_article_thumb/how_to_become_A_programmer.jpg",
             ),
           ),
         ],
