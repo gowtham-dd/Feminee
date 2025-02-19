@@ -1,6 +1,6 @@
-# 🌸 EmpowerHer - A Platform for Marginalized Women
+# 🌸 Feminee - A Platform for Marginalized Women
 
-EmpowerHer is a mobile application designed to uplift marginalized women by providing access to educational resources, skill development opportunities, and job placements. The platform allows users to learn essential digital skills, connect with companies for internships, and receive payments for their work. An integrated NLP chatbot helps users navigate the platform and gain relevant information easily.
+Feminee is a mobile application designed to uplift marginalized women by providing access to educational resources, skill development opportunities, and job placements. The platform allows users to learn essential digital skills, connect with companies for internships, and receive payments for their work. An integrated NLP chatbot helps users navigate the platform and gain relevant information easily.
 
 ## 🚀 Features
 - **User Authentication**: Secure login system using Firebase.
